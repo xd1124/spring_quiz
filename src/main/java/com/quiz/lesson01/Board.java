@@ -7,19 +7,18 @@ public class Board {
 	private String user;
 	private String content;
 	
+	// 생성자
 	public Board() {
 		
 	}
 	
-	// 생성자
 	public Board(String title, String user, String content) {
 		this.title = title;
 		this.user = user;
 		this.content = content;
-		
 	}
-	// 메소드
 
+	// 메소드
 	public String getTitle() {
 		return title;
 	}
@@ -44,4 +43,5 @@ public class Board {
 		this.content = content;
 	}
 	
+
 }
