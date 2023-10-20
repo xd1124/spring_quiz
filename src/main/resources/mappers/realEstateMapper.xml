@@ -35,7 +35,7 @@
 			`real_estate`
 		WHERE
 			<![CDATA[
-				`rentPrice` < #{rentPrice}
+				`rentPrice` < #{rentPrice123}
 			]]>
  	</select>
  	
@@ -54,11 +54,77 @@
 			`real_estate`
 		WHERE
 		 	<![CDATA[	
-		 		`type` = `매매` 
-		 		AND `area` >= #{area} 
-		 		AND `price` <= #{price}
+		 		`type` = '매매' 
+		 		AND `area` >= #{area11} 
+		 		AND `price` <= #{price22}
 		 	]]>
 		ORDER BY
 			 `createdAt` desc
  	</select>
+ 	
+ 	<insert id="insertRealEstate" parameterType="com.quiz.lesson03.domain.RealEstate">
+		 	INSERT INTO `real_estate`
+			(
+				`realtorId`
+				, `address`
+				, `area`
+				, `type`
+				, `price`
+			    , `createdAt`
+				, `updatedAt`
+			)
+			VALUES
+			(
+				#{realtorId}
+				, #{address}
+				, #{area}
+				, #{type}
+				, #{price}
+			    , NOW()
+			    , NOW()
+			)
+ 	</insert>
+ 	
+ 	<insert id="insertRealEstateAsField" parameterType="map">
+		 	INSERT INTO `real_estate`
+			(
+				`realtorId`
+				, `address`
+				, `area`
+				, `type`
+				, `price`
+				, `rentPrice`
+			    , `createdAt`
+				, `updatedAt`
+			)
+			VALUES
+			(
+				#{realtorId}
+				, #{address1}
+				, #{area2}
+				, #{type3}
+				, #{price4}
+				, #{rentPrice5}
+			    , NOW()
+			    , NOW()
+			)
+ 	</insert>
+ 	
+ 	<update id="updateRealEstateById" parameterType="map">
+ 			UPDATE `real_estate`
+			SET
+					`type` = #{type}
+					, `price` = #{price}
+					, `updatedAt` = NOW()
+			WHERE
+					`id` = #{id}
+ 	</update>
+ 	
+ 	<delete id="deleteRealEstateById" parameterType="int">
+ 			DELETE
+ 			FROM
+ 					`real_estate`
+ 			WHERE
+ 					`id` = #{id}
+ 	</delete>
  </mapper>
